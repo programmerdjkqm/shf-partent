@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.adminroledao">
+    <select id="selectrolebyadmin" resultType="long">
+        select role_id from acl_admin_role where admin_id =#{admin} and is_deleted=0
+    </select>
+    <update id="delroles">
+        update acl_admin_role set is_deleted =1 where admin_id =#{admin}
+    </update>
+    <insert id="add">
+        insert into acl_admin_role(role_id,admin_id) values (#{roleid},#{adminid})
+    </insert>
+</mapper>

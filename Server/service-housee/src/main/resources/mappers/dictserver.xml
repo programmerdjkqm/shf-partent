@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.atguigu.dao.DictServicedao">
+    <sql id="columns">
+        select id,parent_id,name,dict_code,create_time,update_time,is_deleted
+    </sql>
+
+    <!--根据父节点的id查询它所有的子节点-->
+    <select id="slectznodesbypartentid" resultType="dict">
+        <include refid="columns"></include>
+        from hse_dict
+        where parent_id = #{parentId}
+    </select>
+    <select id="getNameByPlaneId" resultType="string">
+        select name from hse_dict where id = #{id}
+    </select>
+    <select id="getNameByareaId" resultType="string">
+        select name from hse_dict where id = #{id}
+    </select>
+    <select id="selectbybianma" resultType="long">
+        select id from hse_dict where name=#{name};
+    </select>
+</mapper>
